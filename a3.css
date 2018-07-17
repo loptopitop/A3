@@ -1,0 +1,12 @@
+#myElement {
+    background: silver;
+    height: 300px;
+    text-align: center;
+    font: 30px/300px Helvetica, Arial, sans-serif;
+  }
+  #myElement2 {
+    background: rgb(206, 91, 91);
+    height: 300px;
+    text-align: center;
+    font: 30px/300px Helvetica, Arial, sans-serif;
+  }
