@@ -1,0 +1,72 @@
+<html>
+<head>
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+
+
+    
+
+    <link rel="stylesheet" href="a3.css">
+</head>
+<body>
+    <h1>
+        Assignment 3
+    </h1>
+    <h2>Part 1: Map</h2>
+
+    <button onclick="Seemylocation()">See my location</button>
+
+    <select id="123" onchange="myMap()">
+        <option value="0">Ontario</option>
+        <option value="1">Alberta</option>
+        <option value="2">Saskatchewan</option>
+        <option value="3">British Columbia</option>
+        <option value="4">Yukon</option>
+        <option value="5">Quebec</option>
+        <option value="6">Northwest Territories</option>
+        <option value="7">Nunuvut</option>
+        <option value="8">Nova Scotia</option>
+        <option value="9">Manitoba</option>
+        <option value="10">Newfoundland and Labrador</option>
+        <option value="11">New Brunswick</option>
+        <option value="12">Prince Edward Island</option>
+
+    </select>
+
+    <div id="map" style="width: 400px; height: 400px; background-color: yellow;"></div>
+    <script src="A3.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+    <h2>tap, pan hammer</h2>
+    <div id="myElement"></div>
+    <h2>swipe hammer</h2>
+    <div id="myElement2"></div>
+    <div id="myElement3"></div>
+
+
+    <script>
+        var myElement=document.getElementById("myElement"),mc=new Hammer(myElement);mc.get("pan").set({direction:Hammer.DIRECTION_ALL});mc.on("panleft panright panup pandown tap press",function(a){myElement.textContent=a.type+" gesture detected."});var myElement2=document.getElementById("myElement2"),mx=new Hammer.Manager(myElement2),pinch=new Hammer.Pinch,rotate=new Hammer.Rotate;pinch.recognizeWith(rotate);mx.add([pinch,rotate]);mx.on("pinch rotate",function(a){myElement.textContent+=a.type+" rotate worked "});
+        </script>
+
+        <script>
+            if (window.DeviceOrientationEvent) {
+    // Create an event listener
+    window.addEventListener('deviceorientation', function(event) {
+        // Get the left-to-right tilt (in degrees).
+        var tiltLR = event.gamma;
+        console.log(tiltLR);
+
+        // Get the front-to-back tilt (in degrees).
+        var titleFB = event.beta;
+        console.log(titleFB);
+
+        // Get the direction of the device (in degrees).
+        var direction = event.alpha;
+        console.log(direction);
+    });
+    document.getElementById("myElement3").innerHTML = window.DeviceOrientationEvent;
+
+    }
+</script>
+</body>
+
+</html>
